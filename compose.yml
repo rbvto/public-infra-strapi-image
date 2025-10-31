@@ -5,17 +5,19 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.dev
-      platforms:
-        - linux/amd64
-        - linux/arm64
-        - linux/arm/v7
+      # platforms:
+      #   - linux/amd64
+      #   - linux/arm64
+      #   - linux/arm/v7
+    ports:
+      - 1337:1337
 
-  strapi-prod:
+  strapi-prd:
     image: rbvtopudding/public-infra-strapi-image:${STRAPI_RELEASE}-prd
     build:
       context: .
       dockerfile: Dockerfile.prd
-      platforms:
-        - linux/amd64
-        - linux/arm64
-        - linux/arm/v7
+      # platforms:
+      #   - linux/amd64
+      #   - linux/arm64
+      #   - linux/arm/v7

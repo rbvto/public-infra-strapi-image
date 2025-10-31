@@ -1,34 +1,14 @@
-###
-# Build Image
-###
-FROM node:22-alpine AS build
-ENV NODE_ENV=development
+FROM node:22-alpine
 
 WORKDIR /srv/strapi
 
-RUN apk add --no-cache \
-      gcc \
-      git \
-      autoconf \
-      automake \
-      vips-dev \
-      zlib-dev \
-      vips-dev \
-      libpng-dev \
-      build-base
-
-COPY ./src/package*.json ./
-
-RUN npm config set fetch-retry-maxtimeout 600000 -g \
-&&  npm install -g node-gyp \
-&&  npm install
-
 ENV PATH=/srv/strapi/node_modules/.bin:$PATH
 
-COPY ./src/ .
+COPY ./src ./
+RUN yarn install
 RUN chown -R node:node ./
 
 USER node
 EXPOSE 1337
 
-CMD ["npm", "run", "dev"]
+CMD ["yarn", "dev"]
