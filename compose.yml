@@ -1,0 +1,21 @@
+---
+services:
+  strapi-dev:
+    image: rbvtopudding/public-infra-strapi-image:dev
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - linux/arm/v7
+
+  strapi-prod:
+    image: rbvtopudding/public-infra-strapi-image:prod
+    build:
+      context: .
+      dockerfile: Dockerfile.prd
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - linux/arm/v7
