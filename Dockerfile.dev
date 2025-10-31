@@ -17,7 +17,7 @@ RUN apk add --no-cache \
       libpng-dev \
       build-base
 
-COPY package*.json ./
+COPY ./src/package*.json ./
 
 RUN npm config set fetch-retry-maxtimeout 600000 -g \
 &&  npm install -g node-gyp \
@@ -25,7 +25,7 @@ RUN npm config set fetch-retry-maxtimeout 600000 -g \
 
 ENV PATH=/srv/strapi/node_modules/.bin:$PATH
 
-COPY . .
+COPY ./src/ .
 RUN chown -R node:node ./
 
 USER node

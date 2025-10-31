@@ -1,7 +1,7 @@
 ---
 services:
   strapi-dev:
-    image: rbvtopudding/public-infra-strapi-image:dev
+    image: rbvtopudding/public-infra-strapi-image:${STRAPI_RELEASE}-dev
     build:
       context: .
       dockerfile: Dockerfile.dev
@@ -11,7 +11,7 @@ services:
         - linux/arm/v7
 
   strapi-prod:
-    image: rbvtopudding/public-infra-strapi-image:prod
+    image: rbvtopudding/public-infra-strapi-image:${STRAPI_RELEASE}-prd
     build:
       context: .
       dockerfile: Dockerfile.prd
